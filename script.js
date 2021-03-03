@@ -121,8 +121,8 @@ function scoresToDOM() {
   baseTime = timePlayed.toFixed(1);
   penaltyTime = penaltyTime.toFixed(1);
   baseTimeEl.textContent = `Base Time: ${baseTime}s`;
-  finalCountEl.textContent = `Number of Incorrect: ${finalIncorrectCount}`
-  penaltyTimeEl.textContent = `Penalty Added: + ${penaltyTime}s`;
+  finalCountEl.textContent = `Incorrect: ${finalIncorrectCount}`
+  penaltyTimeEl.textContent = `Penalty Added: +${penaltyTime}s`;
   finalTimeEl.textContent = `${finalTimeDisplay}s`;
 
   updateBestScore();
