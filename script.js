@@ -266,27 +266,38 @@ function populateGamePage() {
 
 //run countdown... 3, 2, 1, GO
 function countdownStart() {
-  let count = 3;
-  countdown.textContent = count;
-  const timeCountDown = setInterval(() => {
-    count--;
-    if(count === 0) {
-      countdown.textContent = 'GO!';
-    } else if (count === -1) {
-        showGamePage();
-        clearInterval();
-    } else {
-      countdown.textContent = count;
-    }
+  countdown.textContent = '3';
+  setTimeout(() => {
+    countdown.textContent = '2';
   }, 1000);
+  setTimeout(() => {
+    countdown.textContent = '1';
+  }, 2000);
+  setTimeout(() => {
+    countdown.textContent = 'GO!';
+  }, 3000);
+  // let count = 3;
+  // countdown.textContent = count;
+  // const timeCountDown = setInterval(() => {
+  //   count--;
+  //   if(count === 0) {
+  //     countdown.textContent = 'GO!';
+  //   } else if (count == -1) {
+  //       showGamePage();
+  //       clearInterval();
+  //   } else {
+  //     countdown.textContent = count;
+  //   }
+  // }, 1000);
 }
 
 //Navigate from splash to countdown page
 function showCountdown() {
   countdownPage.hidden = false;
   splashPage.hidden = true;
-  populateGamePage();
   countdownStart();
+  setTimeout(showGamePage, 4000);
+  populateGamePage();
 }
 
 //Get the value from selected radio button
