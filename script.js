@@ -3,6 +3,7 @@ const gamePage = document.getElementById('game-page');
 const scorePage = document.getElementById('score-page');
 const splashPage = document.getElementById('splash-page');
 const countdownPage = document.getElementById('countdown-page');
+const summaryPage = document.getElementById('summary-page');
 // Splash Page
 const startForm = document.getElementById('start-form');
 const radioContainers = document.querySelectorAll('.radio-container');
@@ -18,12 +19,17 @@ const baseTimeEl = document.querySelector('.base-time');
 const penaltyTimeEl = document.querySelector('.penalty-time');
 const playAgainBtn = document.querySelector('.play-again');
 const finalCountEl = document.querySelector('.final-count');
+// summary page
+const summaryBtn = document.querySelector('.summary');
+const summaryContainer = document.querySelector('.summary-container');
+const summaryTitleEl = document.querySelector('.title');
 
 // Equations
 let questionAmount = 0;
 let equationsArray = [];
 let playerGuessArray = [];
 let bestScoreArray = [];
+let incorrectArray = [];
 
 // Game Page
 let firstNumber = 0;
@@ -94,24 +100,41 @@ function updateBestScore() {
   localStorage.setItem('bestScores', JSON.stringify(bestScoreArray));
 }
 
+//show summary
+function showSummaryPage() {
+    //show play again button after 1s
+    setTimeout(() => {
+      playAgainBtn.hidden = false;
+    }, 1000);
+    gamePage.hidden = true;
+    scorePage.hidden = true;
+    summaryPage.hidden = false;
+    // populateSummaryPage();
+    summaryToDOM();
+}
+
 //reset game
 function playAgain() {
   gamePage.addEventListener('click', startTimer);
+  summaryPage.hidden = true;
   scorePage.hidden = true;
   splashPage.hidden = false;
   equationsArray = [];
   playerGuessArray = [];
   valueY = 0;
+  finalIncorrectCount = 0;
   playAgainBtn.hidden = true;
+  summaryBtn.hidden = true;
 }
 
 //show score page
 function showScorePage() {
-  //show play again button after 1s
+  //show summary button after 1s
   setTimeout(() => {
-    playAgainBtn.hidden = false;
+    summaryBtn.hidden = false;
   }, 1000);
   gamePage.hidden = true;
+  summaryPage.hidden = true;
   scorePage.hidden = false;
 }
 
@@ -143,8 +166,11 @@ function checkTime() {
         //correct guess, no penalty
       } else {
         //incorrect guess, add penalty
+        // console.log('equation wrong:', equationsArray[index]);
+        // incorrectArray.push(equationsArray[index]);
+        // console.log('incorrectArray:', incorrectArray[index]);
         finalIncorrectCount++;
-        penaltyTime += 0.5;
+        penaltyTime += 2.5;
       }
     });
     finalTime = timePlayed + penaltyTime;
@@ -262,6 +288,47 @@ function populateGamePage() {
   const bottomSpacer = document.createElement('div');
   bottomSpacer.classList.add('height-500');
   itemContainer.appendChild(bottomSpacer);
+}
+
+function summaryToDOM() {
+  summaryContainer.textContent = '';
+  // summaryContainer.scrollTo({ top: 0, behavior: 'instant'});
+  equationsArray.forEach((equation, index) => {
+    if(equation.evaluated === playerGuessArray[index]) {
+
+    } else {
+      // console.log('equation wrong:', equationsArray[index]);
+      //item
+      const sumItem = document.createElement('div');
+      sumItem.classList.add('sum-item');
+      //equation text
+      const summaryText = document.createElement('h1');
+      summaryText.textContent = equation.value;
+      console.log('equation value:', equation.value);
+      //append
+      sumItem.appendChild(summaryText);
+      summaryContainer.appendChild(sumItem);
+    }
+  });
+}
+
+function populateSummaryPage() {
+    // Reset DOM, Set Blank Space Above
+    // summaryContainer.textContent = '';
+    // // Spacer
+    // const topSpacer = document.createElement('div');
+    // topSpacer.classList.add('height-240');
+    // // Selected Item (blue bar)
+    // const summaryItem = document.createElement('div');
+    // summaryItem.classList.add('summary-item');
+    // //Append
+    // summaryContainer.append(topSpacer, summaryItem);
+    //summaryToDOM();
+
+     // Set Blank Space Below
+    // const bottomSpacer = document.createElement('div');
+    // bottomSpacer.classList.add('height-500');
+    // itemContainer.appendChild(bottomSpacer);
 }
 
 //run countdown... 3, 2, 1, GO

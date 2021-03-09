@@ -131,11 +131,38 @@ label {
   -ms-overflow-style: none;
 }
 
+.score-container {
+  height: 552px;
+  overflow-y: scroll;
+  position: relative;
+  -ms-overflow-style: none;
+}
+
+.summary-container {
+  height: 552px;
+  overflow-y: scroll;
+  position: relative;
+  -ms-overflow-style: none;
+}
+
 .item-container::-webkit-scrollbar {
   display: none;
 }
 
+.summary-container::-webkit-scrollbar {
+  display: none;
+}
+
 .item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  height: 80px;
+  margin: 0 50px;
+  user-select: none;
+}
+
+.sum-item {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -149,6 +176,15 @@ label {
 }
 
 .selected-item {
+  background: var(--primary-color);
+  position: fixed;
+  top: 443px;
+  z-index: -1;
+  width: 529px;
+  height: 80px;
+}
+
+.summary-item {
   background: var(--primary-color);
   position: fixed;
   top: 443px;
@@ -211,6 +247,11 @@ button:active {
   background: var(--primary-color-light);
 }
 
+.summary {
+  width: 90%;
+  background: var(--primary-color-light);
+}
+
 /* Countdown Page ---------------------- */
 .countdown {
   margin-top: 45%;
@@ -266,6 +307,10 @@ button:active {
   .selected-item {
     top: 380px;
   }
+
+  .summary-item {
+    top: 380px;
+  }
 }
 
 /* Media Query: Large Smartphone (Vertical) */
@@ -277,6 +322,10 @@ button:active {
   }
 
   .selected-item {
+    top: 345px;
+  }
+
+  .summary-item {
     top: 345px;
   }
 

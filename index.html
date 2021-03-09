@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Sprint Game</title>
+    <title>Math Dash Game</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +11,7 @@
     <div class="game-container">
         <!--Header-->
         <div class="header">
-            <h1>Math Sprint</h1>
+            <h1>Math Dash</h1>
         </div>
         <!--Splash Pagee-->
         <div class="card" id="splash-page">
@@ -87,9 +87,20 @@
                 <h1 class="final-count"></h1>
                 <h1 class="penalty-time"></h1>
             </div>
-            <!-- Play Again Button -->
+            <!-- Summary Button -->
             <div class="score-footer">
-                <button class="play-again" onclick="playAgain()" hidden>Play Again</button>
+                <button class="summary" onclick="showSummaryPage()" hidden>Missed Equations</button>
+            </div>
+        </div>
+
+        <!-- Summary Page -->
+        <div class="card" id="summary-page" hidden>
+            <!-- summary container -->
+            <div class="summary-container">
+                <h1 class="title">Summary</h1>
+            </div>
+            <div class="score-footer">
+                <button class="play-again" onclick="playAgain()" hidden>PLAY AGAIN</button>
             </div>
         </div>
 
