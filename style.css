@@ -217,6 +217,7 @@ button {
   color: white;
   border: none;
   outline: none;
+  touch-action: none;
 }
 
 button:hover {
@@ -235,10 +236,12 @@ button:active {
 .wrong {
   background: var(--danger);
   margin-right: 25px;
+  touch-action: none;
 }
 
 .right {
   background: var(--success);
+  touch-action: none;
 }
 
 .start,
