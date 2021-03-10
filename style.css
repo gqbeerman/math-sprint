@@ -295,10 +295,14 @@ button:active {
 .base-time {
   margin-top: 100px;
   margin-bottom: 0;
+  justify-content: center;
+  align-items: center;
 }
 
 .penalty-time {
   color: var(--danger);
+  justify-content: center;
+  align-items: center;
 }
 
 /* Media Query: Laptop */
@@ -356,6 +360,7 @@ button:active {
   .best-score {
     font-size: 1rem;
     left: 245px;
+    justify-content: center;
   }
 
   .selection-footer {
