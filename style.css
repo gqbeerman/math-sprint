@@ -377,9 +377,19 @@ button:active {
   }
 }
 
+.column {
+  width: 100%;
+}
+
 /* Media Query: iPhone */
 @media screen and (max-width: 376px) {
   .best-score {
     left: 232px;
+  }
+}
+
+@media (min-width: 600px) {
+  .column {
+    width: 50%;
   }
 }
